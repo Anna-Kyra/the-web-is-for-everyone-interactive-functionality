@@ -1,0 +1,11 @@
+<%- include('./partials/head')%>
+<h1>Bedrijf</h1>
+<%= companies.name %>
+
+<% stakeholders.forEach(function(stakeholder) { %>
+    <article>
+    <%= stakeholder.type %>
+    <%= stakeholder.name %>
+    </article>
+<% }) %>
+<%- include('./partials/foot')%>
