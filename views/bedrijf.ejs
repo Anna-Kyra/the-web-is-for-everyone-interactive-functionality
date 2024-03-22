@@ -14,9 +14,9 @@
                 <i>info financiers, bijvoorbeeld...</i>
                 <label>
                     Financier 1
-                    <select required>
-                    <option value=""> ... </option>
-                    </select>  
+                    <input list="financiers" name="browser" required>
+                    <datalist id="financiers">
+                    </datalist>                    
                 </label>
             </section>
             <section>
@@ -24,21 +24,23 @@
                 <i>info klanten, bijvoorbeeld...</i>
                 <label>
                     Klant 1
-                    <select required>
-                    <option value=""> ... </option>
-                    <% klanten.forEach(function(klant) { %>
-                        <option value="first" > <%= klant.name %> </option>
-                    <% }) %>
+                    <input list="klanten1" name="browser" required>
+                    <datalist id="klanten1">
+                        <% klanten.forEach(function(klant) { %>
+                            <option value="<%= klant.name %>" > <%= klant.name %> </option>
+                        <% }) %>
+                    </datalist>                    
                     </select>  
                 </label>
                 <label>
                     Klant 2
-                    <select required>
-                    <option value=""> ... </option>
-                    <% klanten.forEach(function(klant) { %>
-                        <option value="first" > <%= klant.name %> </option>
-                    <% }) %>
-                    </select>  
+                    <input list="klanten2" name="browser" required>
+                    <datalist id="klanten2">
+                        <% klanten.forEach(function(klant) { %>
+                            <option value="<%= klant.name %>" > <%= klant.name %> </option>
+                        <% }) %>
+                    </datalist>                    
+                    </select>   
                 </label>
             </section>
 
@@ -47,15 +49,15 @@
                 <small>info leveranciers, bijvoorbeeld...</small>
                 <label>
                     Leverancier 1
-                    <select required>
-                    <option value=""> ... </option>
-                    </select>  
+                    <input list="leveranciers" name="browser" required>
+                    <datalist id="leveranciers">
+                    </datalist>   
                 </label>
                 <label>
                     Leverancier 2
-                    <select required>
-                    <option value=""> ... </option>
-                    </select>  
+                    <input list="leveranciers" name="browser" required>
+                    <datalist id="leveranciers">
+                    </datalist>  
                 </label>
             </section>
 
@@ -64,9 +66,9 @@
                 <small>info medewerkers, bijvoorbeeld...</small>
                 <label>
                     Medewerker 1
-                    <select required>
-                    <option value=""> ... </option>
-                    </select>  
+                    <input list="medewerkers" name="browser" required>
+                    <datalist id="medewerkers">
+                    </datalist>   
                 </label>
             </section>
 
@@ -75,9 +77,9 @@
                 <small>info omgeving, bijvoorbeeld...</small>
                 <label>
                     Omgeving 1
-                    <select required>
-                    <option value=""> ... </option>
-                    </select>  
+                    <input list="omgeving" name="browser" required>
+                    <datalist id="omgeving">
+                    </datalist>  
                 </label>
             </section>
             <button onclick="history.back()">terug</button>
