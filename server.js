@@ -13,7 +13,7 @@ const sdgData = await fetchJson(apiUrl + '/hf_sdgs')
 const scoresData = await fetchJson(apiUrl + '/hf_scores')
 const companiesData = await fetchJson(apiUrl + '/hf_companies')
 
-const klantenData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"4","type":"klanten"}`)
+const klantenData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"klanten"}`)
 console.log(klantenData.data)
 
 // ROUTES 
