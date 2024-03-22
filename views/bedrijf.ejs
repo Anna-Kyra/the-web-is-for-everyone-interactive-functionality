@@ -16,6 +16,9 @@
                     Financier 1
                     <input list="financiers" name="browser" required>
                     <datalist id="financiers">
+                        <% financiers.forEach(function(financier) { %>
+                            <option value="<%= financier.name %>" > <%= financier.name %> </option>
+                        <% }) %>
                     </datalist>                    
                 </label>
                 <button>+</button>
@@ -53,6 +56,9 @@
                     Leverancier 1
                     <input list="leveranciers" name="browser" required>
                     <datalist id="leveranciers">
+                        <% leveranciers.forEach(function(leverancier) { %>
+                            <option value="<%= leverancier.name %>" > <%= leverancier.name %> </option>
+                        <% }) %>
                     </datalist>   
                 </label>
                 <label>
@@ -71,6 +77,9 @@
                     Medewerker 1
                     <input list="medewerkers" name="browser" required>
                     <datalist id="medewerkers">
+                        <% medewerkers.forEach(function(medewerker) { %>
+                            <option value="<%= medewerker.name %>" > <%= medewerker.name %> </option>
+                        <% }) %>
                     </datalist>   
                 </label>
                 <button>+</button>
@@ -83,6 +92,9 @@
                     Omgeving 1
                     <input list="omgeving" name="browser" required>
                     <datalist id="omgeving">
+                        <% omgeving.forEach(function(omgeving) { %>
+                            <option value="<%= omgeving.name %>" > <%= omgeving.name %> </option>
+                        <% }) %>
                     </datalist>  
                 </label>
                 <button>+</button>

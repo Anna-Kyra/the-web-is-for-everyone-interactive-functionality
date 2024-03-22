@@ -13,8 +13,13 @@ const sdgData = await fetchJson(apiUrl + '/hf_sdgs')
 const scoresData = await fetchJson(apiUrl + '/hf_scores')
 const companiesData = await fetchJson(apiUrl + '/hf_companies')
 
+// STAKEHOLDERS
 const klantenData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"klanten"}`)
-console.log(klantenData.data)
+const leveranciersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"leveranciers"}`)
+const financiersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"financiers"}`)
+const medewerkersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"medewerkers"}`)
+const omgevingData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"omgeving"}`)
+console.log(leveranciersData.data)
 
 // ROUTES 
 app.get('/', function(request, response) {
@@ -35,7 +40,11 @@ app.get('/bedrijf/:id', function(request, response) {
                 stakeholders: stakeholdersData.data,
                 scores: scoresData.data,
                 companies: companiesData.data,
-                klanten: klantenData.data
+                klanten: klantenData.data,
+                leveranciers: leveranciersData.data,
+                financiers: financiersData.data,
+                medewerkers: medewerkersData.data,
+                omgeving: omgevingData.data
             }) 
         })
     }) 
