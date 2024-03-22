@@ -9,46 +9,37 @@ app.use(express.urlencoded({extended: true}))
 
 // Stel het basis endpoint in
 const apiUrl = 'https://fdnd-agency.directus.app/items'
-
 const sdgData = await fetchJson(apiUrl + '/hf_sdgs')
-// console.log(stakeholdersData.data)
-
 const scoresData = await fetchJson(apiUrl + '/hf_scores')
 const companiesData = await fetchJson(apiUrl + '/hf_companies')
-// console.log(companiesData.data)
+
+const klantenData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"4","type":"klanten"}`)
+console.log(klantenData.data)
+
 // ROUTES 
 app.get('/', function(request, response) {
     
     response.render('index', {
         sdgs: sdgData.data,
-        // stakeholders: stakeholdersData.data,
         scores: scoresData.data,
         companies: companiesData.data
     })
     response.redirect(303, '/')
 })
+
 app.get('/bedrijf/:id', function(request, response) {
-    const companyId = request.params.id
-    
-    
-    
     fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
-        // console.log(companiesData.data)
-        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${companyId}"}`).then((stakeholdersData) => {
-        console.log(stakeholdersData.data)
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
             response.render('bedrijf', {
                 sdgs: sdgData.data,
                 stakeholders: stakeholdersData.data,
                 scores: scoresData.data,
-                companies: companiesData.data
-            })
-    })
-    })  
-})
-
-
-
-
+                companies: companiesData.data,
+                klanten: klantenData.data
+            }) 
+        })
+    }) 
+})    
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
