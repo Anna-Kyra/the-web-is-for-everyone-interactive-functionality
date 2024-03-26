@@ -1,0 +1,146 @@
+<%- include('./partials/head')%>
+<nav>
+    <%- include('partials/navigatie', {current: '/dashboard'}); %>
+</nav>
+<header>
+    <h1>Dashboard</h1>
+</header>
+<main>
+    <section>
+        <% if (companies.avatar) { %>
+            <%= companies.avatar %>
+            <img src="https://fdnd-agency.directus.app/assets/<%= companies.avatar %>" alt="" height="200px" width="200px">
+        <% } else { %>
+            <img src="/style/image/unknown.webp" alt="" height="200px" width="200px">
+        <% } %>
+        
+        <h4><%= companies.name %></h4>
+        <p>Wat voor bedrijf</p>
+        <p>Hoeveel jaar lid</p>
+        <button type="button">verander profiel</button>
+    </section>
+
+    <section>
+        <h2>Begin met opzetten</h2>
+        <label> Beginner
+            <progress id="file" value="32" max="100"> 32% </progress>
+        </label>
+        <i>Info over hoe de badge gehaald kan worden</i>
+            <ol>
+                <li><h3>Stakeholders</h3>
+                    <i>Info over hoe stakeholders werken</i>
+                    <button type="button">stakeholders toevoegen</button>
+                </li>
+                <li>
+                    <h3>SDG's</h3>
+                <i>Info over hoe sdg's werken</i>
+                <button type="button">sdg's toevoegen</button>
+                </li>
+                <li>
+                    <h3>Scores</h3>
+                    <i>Info over hoe scores op sdg's werken</i>
+                    <button type="button">sdg's toevoegen</button>
+                </li>
+            </ol>
+    </section>
+
+    <section>
+        <h2>Stakeholders</h2>
+        <i>Info over hoe stakeholders werken</i>
+
+        <ul>
+            <li>
+                <img src="" alt="" height="100px" width="100px">
+                <h3>
+                    Financiers
+                </h3>
+                <i>info over financiers</i>
+                <button type="button">+ voeg financier toe</button>
+            </li>
+            <li>
+                <img src="" alt="" height="100px" width="100px">
+                <h3>
+                    Klanten
+                </h3>
+                <i>info over klant</i>
+                <button type="button" popovertarget="nieuwe-klant">+ voeg klant toe</button>
+            </li>
+
+                
+                <form popover id="nieuwe-klant">
+                    <a href="/">terug</a>
+                    <h2>Klant toevoegen</h2>
+                    <p>* geeft een verplicht veld aan</p>
+                    <fieldset>
+                        <label>
+                            Klant naam
+                            <input type="text" placeholder="bijv. ..." required>
+                        </label>
+                        <label>
+                            Klant profielfoto
+                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                        </label>
+                    </fieldset>
+                    
+
+                    <fieldset>
+                        <legend>SDG's toevoegen</legend>
+                        <i>info over wat SDG's zijn</i>
+                        <p>kies minimaal 3 sdg's</p>
+                        <%- include('partials/sdgs'); %>
+
+                        <button type="button">overslaan</button>
+                        <button type="submit">volgende</button>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Scores toevoegen</legend>
+                        <p>Van de gekozen sdgs score van -5 tot 5</p>
+
+                        <%- include('partials/selected_sdgs'); %>
+                        <button type="button">overslaan</button>
+                    </fieldset>
+
+
+                        <button type="submit">opslaan</button>
+                        
+
+                    
+                </form>
+            <li>
+                <img src="" alt="" height="100px" width="100px">
+                <h3>
+                    Leveranciers
+                </h3>
+                <i>info over leverancier</i>
+                <button type="button">+ voeg leverancier toe</button>
+            </li>
+            <li>
+                <img src="" alt="" height="100px" width="100px">
+                <h3>
+                    Medewerkers
+                </h3>
+                <i>info over medewerker</i>
+                <button type="button">+ voeg medewerker toe</button>
+            </li>
+            <li>
+                <img src="" alt="" height="100px" width="100px">
+                <h3>
+                    Omgeving
+                </h3>
+                <i>info over omgeving</i>
+                <button>+ voeg omgeving toe</button>
+            </li>
+        </ul>
+    </section>
+</main>
+<footer>
+    <ul>
+        <li><a href="#">Onze Visie</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy voorwaarde</a></li>   
+    </ul>
+    <p>&copy; 2023 CrossMarx</p>
+</footer>
+<%- include('./partials/foot')%>

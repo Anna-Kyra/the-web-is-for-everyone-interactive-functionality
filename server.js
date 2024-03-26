@@ -32,6 +32,24 @@ app.get('/', function(request, response) {
     response.redirect(303, '/')
 })
 
+app.get('/dashboard/:id', function(request, response) {
+    fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
+            response.render('dashboard', {
+                sdgs: sdgData.data,
+                stakeholders: stakeholdersData.data,
+                scores: scoresData.data,
+                companies: companiesData.data,
+                klanten: klantenData.data,
+                leveranciers: leveranciersData.data,
+                financiers: financiersData.data,
+                medewerkers: medewerkersData.data,
+                omgeving: omgevingData.data
+            }) 
+        })
+    }) 
+})
+
 app.get('/bedrijf/:id', function(request, response) {
     fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
         fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 

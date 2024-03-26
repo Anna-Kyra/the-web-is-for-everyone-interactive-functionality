@@ -1,0 +1,23 @@
+
+<header>
+    <% if (companies.avatar) { %>
+        <%= companies.avatar %>
+        <img src="https://fdnd-agency.directus.app/assets/<%= companies.avatar %>" alt="" height="100px" width="100px">
+    <% } else { %>
+        <img src="/style/image/unknown.webp" alt="" height="100px" width="100px">
+    <% } %>
+<p><%= companies.name %></p>
+</header>
+
+<ul>
+    <li><a href="/dashboard" <% if (current == '/') { %>class="active"<% } %>>Dashboard</a></li>
+    <li><a href="/financiers" <% if (current == '/financiers') { %>class="active"<% } %>>Financiers</a></li>
+    <li><a href="/klanten" <% if (current == '/klanten') { %>class="active"<% } %>>Klanten</a></li>
+    <li><a href="/leveranciers" <% if (current == '/leveranciers') { %>class="active"<% } %>>Leveranciers</a></li>
+    <li><a href="/medewerkers"<% if (current == '/medewerkers') { %>class="active"<% } %>>Medewerkers</a></li>
+    <li><a href="/omgeving" <% if (current == '/omgeving') { %>class="active"<% } %>>Omgeving</a></li>    
+</ul>
+
+<ul>
+    <li><a href="/" <% if (current == '/') { %>class="active"<% } %>>Afmelden</a></li>
+</ul>

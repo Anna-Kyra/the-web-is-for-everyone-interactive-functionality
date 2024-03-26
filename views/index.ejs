@@ -5,9 +5,19 @@
 </header>
 
 <main>
-    <% companies.forEach(function(company) { %>
-<li><a href="./bedrijf/<%= company.id %>"> <%= company.name %></a></li>
-<% }) %>
+    <h2>vragenlijst</h2>
+    <section>
+        <% companies.forEach(function(company) { %>
+            <li><a href="./bedrijf/<%= company.id %>"> <%= company.name %></a></li>
+        <% }) %>
+    </section>
+
+    <h2>dashboard</h2>
+    <section>
+        <% companies.forEach(function(company) { %>
+            <li><a href="./dashboard/<%= company.id %>"> <%= company.name %></a></li>
+        <% }) %>
+    </section>
 </main>
 
 <footer>
