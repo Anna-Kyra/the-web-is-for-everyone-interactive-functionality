@@ -14,7 +14,7 @@ const scoresData = await fetchJson(apiUrl + '/hf_scores')
 const companiesData = await fetchJson(apiUrl + '/hf_companies')
 
 // STAKEHOLDERS
-const klantenData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"klanten"}`)
+// const klantenData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"klanten"}`)
 const leveranciersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"leveranciers"}`)
 const financiersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"financiers"}`)
 const medewerkersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"medewerkers"}`)
@@ -30,24 +30,6 @@ app.get('/', function(request, response) {
         companies: companiesData.data
     })
     response.redirect(303, '/')
-})
-
-app.get('/dashboard/:id', function(request, response) {
-    fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
-        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
-            response.render('dashboard', {
-                sdgs: sdgData.data,
-                stakeholders: stakeholdersData.data,
-                scores: scoresData.data,
-                companies: companiesData.data,
-                klanten: klantenData.data,
-                leveranciers: leveranciersData.data,
-                financiers: financiersData.data,
-                medewerkers: medewerkersData.data,
-                omgeving: omgevingData.data
-            }) 
-        })
-    }) 
 })
 
 app.get('/bedrijf/:id', function(request, response) {
@@ -66,7 +48,56 @@ app.get('/bedrijf/:id', function(request, response) {
             }) 
         })
     }) 
-})    
+}) 
+
+app.get('/dashboard/:id', function(request, response) {
+    fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}"}`).then((stakeholdersData) => { 
+            fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}", "type":"klanten"}`).then((klantenData) => { 
+                response.render('dashboard', {
+                    sdgs: sdgData.data,
+                    stakeholders: stakeholdersData.data,
+                    klanten: klantenData.data,
+                    scores: scoresData.data,
+                    companies: companiesData.data,
+                    klanten: klantenData.data,
+                    leveranciers: leveranciersData.data,
+                    financiers: financiersData.data,
+                    medewerkers: medewerkersData.data,
+                    omgeving: omgevingData.data
+                }) 
+            })
+        })
+    }) 
+})
+
+app.post('/dashboard/:id', (request, response) =>{
+    console.log(request.body)
+    console.log(request.body.klant) // naam in de ejs
+    const klant = new Klant({
+        name: request.body.klant
+    })
+    klant.save()
+
+})
+
+app.get('/klanten/:id', function(request, response) {
+    fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
+        fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}", "type":"klanten"}`).then((klantenData) => { 
+            response.render('klanten', {
+                sdgs: sdgData.data,
+                klanten: klantenData.data,
+                scores: scoresData.data,
+                companies: companiesData.data,
+                klanten: klantenData.data,
+                leveranciers: leveranciersData.data,
+                financiers: financiersData.data,
+                medewerkers: medewerkersData.data,
+                omgeving: omgevingData.data
+            }) 
+        })
+    }) 
+})
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)

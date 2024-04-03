@@ -47,34 +47,35 @@
     <section>
         <h2>Stakeholders</h2>
         <i>Info over hoe stakeholders werken</i>
-
+        
         <ul>
             <li>
-                <img src="" alt="" height="100px" width="100px">
                 <h3>
                     Financiers
                 </h3>
                 <i>info over financiers</i>
+                <p>Voeg nog 1 financier toe*</p>
                 <button type="button">+ voeg financier toe</button>
             </li>
             <li>
-                <img src="" alt="" height="100px" width="100px">
                 <h3>
                     Klanten
                 </h3>
                 <i>info over klant</i>
+                <p>Voeg nog 2 klanten toe*</p>
                 <button type="button" popovertarget="nieuwe-klant">+ voeg klant toe</button>
+                
             </li>
 
-                
-                <form popover id="nieuwe-klant">
-                    <a href="/">terug</a>
+            <!-- <%- include('partials/nieuwe_stakeholder', {stakeholderName: 'klant'}); %> -->
+            <form method="POST" action="/dashboard/<%= companies.id %>" popover id="nieuwe-klant">
                     <h2>Klant toevoegen</h2>
+                    <a href="/dashboard/<%= companies.id %>">x</a>
                     <p>* geeft een verplicht veld aan</p>
                     <fieldset>
                         <label>
                             Klant naam
-                            <input type="text" placeholder="bijv. ..." required>
+                            <input name="klant" type="text" placeholder="bijv. ..." required>
                         </label>
                         <label>
                             Klant profielfoto
@@ -82,11 +83,10 @@
                         </label>
                     </fieldset>
                     
-
                     <fieldset>
                         <legend>SDG's toevoegen</legend>
                         <i>info over wat SDG's zijn</i>
-                        <p>kies minimaal 3 sdg's</p>
+                        <p>Kies minimaal 3 sdg's</p>
                         <%- include('partials/sdgs'); %>
 
                         <button type="button">overslaan</button>
@@ -101,34 +101,31 @@
                         <button type="button">overslaan</button>
                     </fieldset>
 
-
                         <button type="submit">opslaan</button>
-                        
-
-                    
                 </form>
+
             <li>
-                <img src="" alt="" height="100px" width="100px">
                 <h3>
                     Leveranciers
                 </h3>
                 <i>info over leverancier</i>
+                <p>Voeg nog 2 leveranciers toe*</p>
                 <button type="button">+ voeg leverancier toe</button>
             </li>
             <li>
-                <img src="" alt="" height="100px" width="100px">
                 <h3>
                     Medewerkers
                 </h3>
                 <i>info over medewerker</i>
+                <p>Voeg nog 1 medewerker toe*</p>
                 <button type="button">+ voeg medewerker toe</button>
             </li>
             <li>
-                <img src="" alt="" height="100px" width="100px">
                 <h3>
                     Omgeving
                 </h3>
                 <i>info over omgeving</i>
+                <p>Voeg nog 1 omgeving toe*</p>
                 <button>+ voeg omgeving toe</button>
             </li>
         </ul>

@@ -1,0 +1,91 @@
+/* FONTS */
+@font-face {
+    font-family: "Halton";
+    src: url(assets/fonts/Halton/Halton\ regular.otf) format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Halton";
+    src: url(assets/fonts/Halton/Halton\ regular-italic.otf) format("opentype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Halton";
+    src: url(assets/fonts/Halton/Halton\ bold.otf) format("opentype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Halton";
+    src: url(assets/fonts/Halton/Halton\ bold-italic.otf) format("opentype");
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Halton";
+    src: url(assets/fonts/Halton/Halton\ light.otf) format("opentype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Halton";
+    src: url(assets/fonts/Halton/Halton\ light-italic.otf) format("opentype");
+    font-weight: 100;
+    font-style: italic;
+}
+
+:root {
+    /* COLOUR */
+    --clr-primary: #AD97C9;
+    --clr-background: #272932;
+    --clr-text: #ecf8f8;
+    --clr-secondary: #519879;
+    --clr-accent: #fb8b24; 
+    
+    /* COLOUR BREAKDOWN */
+
+    --clr-medewerkers: #97BAC9;
+    --clr-financiers: #C2C997;
+    --clr-leveranciers: #C99797;
+    --clr-klanten: #97C9A2;
+    --clr-omgeving: #C997BB;
+    
+    /* RADIUS */
+    --btn-radius: 1000px;
+    --sec-radius:.25em;
+
+    /*TYPOGRAPHY*/
+    --thin: 400; /* Halton-italic */
+    --chubby: 600 ; /* Halton-regular */
+    --fat: 800; /* Halton-bold */
+
+      /* BUTTON */
+    --btn-hover: brightness(120%);
+    --btn-active: brightness(80%);
+
+  /* FORMS */
+    --forms-focus: 3px solid var(--clr-primary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    color: var(--clr-text);
+
+}
+
+body {
+    background-color: var(--clr-background);
+}
+
