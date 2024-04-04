@@ -71,15 +71,15 @@ app.get('/dashboard/:id', function(request, response) {
     }) 
 })
 
-app.post('/dashboard/:id', (request, response) =>{
-    console.log(request.body)
-    console.log(request.body.klant) // naam in de ejs
-    const klant = new Klant({
-        name: request.body.klant
-    })
-    klant.save()
+// app.post('/dashboard/:id', (request, response) =>{
+//     console.log(request.body)
+//     console.log(request.body.klant) // naam in de ejs
+//     const klant = new Klant({
+//         name: request.body.klant
+//     })
+//     klant.save()
 
-})
+// })
 
 app.get('/klanten/:id', function(request, response) {
     fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {

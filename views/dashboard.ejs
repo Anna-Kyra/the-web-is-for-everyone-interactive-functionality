@@ -1,23 +1,27 @@
-<%- include('./partials/head')%>
+<%- include('./partials/head', {current: 'dashboard'})%>
 <nav>
     <%- include('partials/navigatie', {current: '/dashboard'}); %>
 </nav>
-<header>
-    <h1>Dashboard</h1>
-</header>
+
 <main>
-    <section>
+    <header>
+        <h1>Dashboard</h1>
+        <i>Info hoe dashboard werkt</i>
+    </header>
+    <section class="profile">
         <% if (companies.avatar) { %>
             <%= companies.avatar %>
-            <img src="https://fdnd-agency.directus.app/assets/<%= companies.avatar %>" alt="" height="200px" width="200px">
+            <img src="https://fdnd-agency.directus.app/assets/<%= companies.avatar %>" alt="" height="150px" width="150px">
         <% } else { %>
-            <img src="/style/image/unknown.webp" alt="" height="200px" width="200px">
+            <img src="/style/image/unknown.webp" alt="" height="150px" width="150px">
         <% } %>
         
-        <h4><%= companies.name %></h4>
-        <p>Wat voor bedrijf</p>
-        <p>Hoeveel jaar lid</p>
-        <button type="button">verander profiel</button>
+        <div>
+            <h3><%= companies.name %></h3>
+            <p>Wat voor bedrijf</p>
+            <p>Hoeveel jaar lid</p>
+            <button type="button">verander profiel</button>
+        </div>
     </section>
 
     <section>
@@ -27,24 +31,24 @@
         </label>
         <i>Info over hoe de badge gehaald kan worden</i>
             <ol>
-                <li><h3>Stakeholders</h3>
+                <li><h3>1. Stakeholders</h3>
                     <i>Info over hoe stakeholders werken</i>
                     <button type="button">stakeholders toevoegen</button>
                 </li>
                 <li>
-                    <h3>SDG's</h3>
+                    <h3>2. SDG's</h3>
                 <i>Info over hoe sdg's werken</i>
                 <button type="button">sdg's toevoegen</button>
                 </li>
                 <li>
-                    <h3>Scores</h3>
+                    <h3>3. Scores</h3>
                     <i>Info over hoe scores op sdg's werken</i>
                     <button type="button">sdg's toevoegen</button>
                 </li>
             </ol>
     </section>
 
-    <section>
+    <section class="stakeholders">
         <h2>Stakeholders</h2>
         <i>Info over hoe stakeholders werken</i>
         
@@ -54,7 +58,7 @@
                     Financiers
                 </h3>
                 <i>info over financiers</i>
-                <p>Voeg nog 1 financier toe*</p>
+                <p class="alert">Voeg nog 1 financier toe*</p>
                 <button type="button">+ voeg financier toe</button>
             </li>
             <li>
@@ -62,23 +66,26 @@
                     Klanten
                 </h3>
                 <i>info over klant</i>
-                <p>Voeg nog 2 klanten toe*</p>
+                <p class="alert">Voeg nog 2 klanten toe*</p>
                 <button type="button" popovertarget="nieuwe-klant">+ voeg klant toe</button>
                 
             </li>
 
             <!-- <%- include('partials/nieuwe_stakeholder', {stakeholderName: 'klant'}); %> -->
             <form method="POST" action="/dashboard/<%= companies.id %>" popover id="nieuwe-klant">
+                <header>
                     <h2>Klant toevoegen</h2>
                     <a href="/dashboard/<%= companies.id %>">x</a>
+                </header>
+                    
                     <p>* geeft een verplicht veld aan</p>
                     <fieldset>
                         <label>
-                            Klant naam
+                            Klant naam:
                             <input name="klant" type="text" placeholder="bijv. ..." required>
                         </label>
                         <label>
-                            Klant profielfoto
+                            Klant profielfoto:
                             <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
                         </label>
                     </fieldset>
@@ -87,8 +94,9 @@
                         <legend>SDG's toevoegen</legend>
                         <i>info over wat SDG's zijn</i>
                         <p>Kies minimaal 3 sdg's</p>
-                        <%- include('partials/sdgs'); %>
-
+                        <div class="sdgs">
+                            <%- include('partials/sdgs'); %>
+                        </div>
                         <button type="button">overslaan</button>
                         <button type="submit">volgende</button>
                     </fieldset>
@@ -96,8 +104,9 @@
                     <fieldset>
                         <legend>Scores toevoegen</legend>
                         <p>Van de gekozen sdgs score van -5 tot 5</p>
-
-                        <%- include('partials/selected_sdgs'); %>
+                        <div class="sdgs">
+                            <%- include('partials/selected_sdgs'); %>
+                        </div>
                         <button type="button">overslaan</button>
                     </fieldset>
 
@@ -109,7 +118,7 @@
                     Leveranciers
                 </h3>
                 <i>info over leverancier</i>
-                <p>Voeg nog 2 leveranciers toe*</p>
+                <p class="alert">Voeg nog 2 leveranciers toe*</p>
                 <button type="button">+ voeg leverancier toe</button>
             </li>
             <li>
@@ -117,7 +126,7 @@
                     Medewerkers
                 </h3>
                 <i>info over medewerker</i>
-                <p>Voeg nog 1 medewerker toe*</p>
+                <p class="alert">Voeg nog 1 medewerker toe*</p>
                 <button type="button">+ voeg medewerker toe</button>
             </li>
             <li>
@@ -125,19 +134,21 @@
                     Omgeving
                 </h3>
                 <i>info over omgeving</i>
-                <p>Voeg nog 1 omgeving toe*</p>
+                <p class="alert">Voeg nog 1 omgeving toe*</p>
                 <button>+ voeg omgeving toe</button>
             </li>
         </ul>
     </section>
+
+    <footer>
+        <ul>
+            <li><a href="#">Onze Visie</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy voorwaarde</a></li>   
+        </ul>
+        <p>&copy; 2023 CrossMarx</p>
+    </footer>
 </main>
-<footer>
-    <ul>
-        <li><a href="#">Onze Visie</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Privacy voorwaarde</a></li>   
-    </ul>
-    <p>&copy; 2023 CrossMarx</p>
-</footer>
+
 <%- include('./partials/foot')%>

@@ -1,76 +1,77 @@
 /* FONTS */
 @font-face {
     font-family: "Halton";
-    src: url(assets/fonts/Halton/Halton\ regular.otf) format("opentype");
+    src: url(./fonts/Halton/Halton\ regular.otf) format("opentype");
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Halton";
-    src: url(assets/fonts/Halton/Halton\ regular-italic.otf) format("opentype");
+    src: url(./fonts/Halton/Halton\ regular-italic.otf) format("opentype");
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Halton";
-    src: url(assets/fonts/Halton/Halton\ bold.otf) format("opentype");
+    src: url(./fonts/Halton/Halton\ bold.otf) format("opentype");
     font-weight: 800;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Halton";
-    src: url(assets/fonts/Halton/Halton\ bold-italic.otf) format("opentype");
+    src: url(./fonts/Halton/Halton\ bold-italic.otf) format("opentype");
     font-weight: 800;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Halton";
-    src: url(assets/fonts/Halton/Halton\ light.otf) format("opentype");
+    src: url(./fonts/Halton/Halton\ light.otf) format("opentype");
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Halton";
-    src: url(assets/fonts/Halton/Halton\ light-italic.otf) format("opentype");
+    src: url(./fonts/Halton/Halton\ light-italic.otf) format("opentype");
     font-weight: 100;
     font-style: italic;
 }
 
 :root {
     /* COLOUR */
-    --clr-primary: #AD97C9;
+    /* --clr-primary: #AD97C9;
     --clr-background: #272932;
+    --clr-background-50: rgba(39, 41, 50, 0.05);
     --clr-text: #ecf8f8;
     --clr-secondary: #519879;
-    --clr-accent: #fb8b24; 
+    --clr-accent: #fb8b24;  */
     
     /* COLOUR BREAKDOWN */
 
-    --clr-medewerkers: #97BAC9;
+    /* --clr-medewerkers: #97BAC9;
     --clr-financiers: #C2C997;
     --clr-leveranciers: #C99797;
     --clr-klanten: #97C9A2;
-    --clr-omgeving: #C997BB;
+    --clr-omgeving: #C997BB; */
     
     /* RADIUS */
-    --btn-radius: 1000px;
-    --sec-radius:.25em;
+    /* --btn-radius: 1000px;
+    --sec-radius:.25em; */
 
     /*TYPOGRAPHY*/
-    --thin: 400; /* Halton-italic */
-    --chubby: 600 ; /* Halton-regular */
-    --fat: 800; /* Halton-bold */
+    /* --thin: 400; 
+    --chubby: 600 ; 
+    --fat: 800;  */
 
       /* BUTTON */
-    --btn-hover: brightness(120%);
-    --btn-active: brightness(80%);
+    /* --btn-hover: brightness(120%);
+    --btn-active: brightness(80%); */
 
   /* FORMS */
-    --forms-focus: 3px solid var(--clr-primary);
+    /* --forms-focus: 3px solid var(--clr-primary); */
 }
 
 * {
@@ -82,10 +83,568 @@
 html {
     font-size: 16px;
     color: var(--clr-text);
+    font-family: "Halton", sans-serif;
+    word-break: normal;
 
 }
 
 body {
     background-color: var(--clr-background);
+}
+
+
+
+main {
+    grid-area: main;
+}
+
+section {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 1em;
+    border-radius: 5px;
+    display: grid;
+    gap: 1em;
+}
+
+nav {
+    background-color: var(--clr-primary);
+    padding: 2em;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 1000px;
+
+    cursor: pointer;
+}
+
+.alert {
+    color: darkred;
+}
+
+[popover] {
+    /* position: absolute; */
+    max-width: 50em;
+    max-height: 80%;
+    margin: auto;
+    padding: 2em;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    & p {
+        color: darkred;
+    }
+
+    & fieldset:not(:valid) ~ * {
+        display: none;
+    }
+
+    & fieldset {
+        border: none;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 2em;
+        border-radius: 5px;
+        & legend {
+            margin: unset;
+        }
+    }
+
+    & header {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+    }
+
+    & fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        & .sdgs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5em;
+        }
+    }
+
+
+
+}
+
+body:has(:popover-open) {
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        background-color: #00000050;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        /* top: 0; */
+        bottom: 0;
+    }
+
+}
+
+[popover]:not(:popover-open):not(dialog[open]) {
+    display: none;
+}
+
+form {
+
+}
+
+nav {
+    background-color: black;
+    color: white;
+    /* width: 100%; */
+
+    & header {
+        display: flex;
+        justify-content: space-between;
+        gap: .5em;
+        align-items: center;
+    }
+}
+
+nav {
+    gap: 2em;
+    background-color: var(--clr-primary);
+    padding: 2em;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    & a {
+        all: unset;
+        cursor: pointer;
+    }
+
+
+
+    & li {
+        all: unset;
+        
+
+        & .active {
+            background-color: white;
+            color: black;
+        }
+    
+        & a {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: .5em;
+            border-radius: 5px;
+        }
+    }
+
+    & ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        overflow: auto;
+        text-align: center;
+        background-color: black;
+        position: flex;
+
+        &:last-of-type {
+            display: none;
+        }
+
+
+        & ul {
+            display: none;
+            margin: 0 1em;
+            padding: .5em;
+            gap: 0;
+
+
+            & li {
+                background-color: transparent;
+            }
+
+            & a {
+                background-color: transparent;
+            }
+        }
+    }
+
+    & header {
+        display: flex;
+        gap: .5em;
+        align-items: center;
+    }
+
+    & .nav-main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+}
+
+.dashboard {
+    display: block;
+}
+
+.dashboard main {
+    display: grid;
+    flex-direction: column;
+    gap: 2em;
+
+    padding: 1em;
+}
+
+.dashboard .profile {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 1em;
+
+    & img {
+        border-radius: 10000px;
+        margin: auto;
+    }
+}
+
+progress {
+    width: 100%;
+}
+
+ol {
+    display: flex;
+    gap: 1em;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    
+
+    & li {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        min-width: 15em;
+        scroll-snap-align: center;
+        
+        width: 80%;
+        padding: 1em;
+
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+
+.stakeholders ul {
+    display: flex;
+    gap: 1em;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    & li {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        min-width: 15em;
+        scroll-snap-align: center;
+        
+        width: 80%;
+        padding: 1em;
+        background-color: rgba(0, 0, 0, 0.05); 
+    }
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & ul {
+        display: flex;
+        gap: 1em;
+
+        
+    }
+
+    & li {
+        all: unset;
+    }
+}
+
+@media screen and (min-width:60rem) {
+    .dashboard {
+        display: grid;
+        grid-template-columns: 2fr 8fr;
+        grid-template-areas: 'nav main';
+    }
+
+    nav {
+        background-color: black;
+        padding: 2em;
+    }
+
+    .dashboard main {
+        display: grid;
+        flex-direction: column;
+        gap: 2em;
+
+        padding: 2em;
+    }
+
+    .dashboard .profile {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        & img {
+            border-radius: 10000px;
+        }
+    }
+
+    input[type="progress"] {
+        width: 100%;
+    }
+
+    ol {
+        display: flex;
+        gap: 1em;
+        overflow: auto;
+        
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            min-width: 20em;
+            
+            width: 100%;
+            padding: 1em;
+
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    .stakeholders ul {
+        display: flex;
+        gap: 1em;
+        overflow: auto;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            min-width: 20em;
+            
+            width: 100%;
+            padding: 1em;
+            background-color: rgba(0, 0, 0, 0.05); 
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & ul {
+            display: flex;
+            gap: 1em;
+        }
+    }
+}
+
+@media screen and (min-width:60rem) {
+
+    [popover] {
+        width: 50em;
+    }
+
+    section {
+        padding: 2em;
+    }
+
+    .dashboard {
+        display: grid;
+        grid-template-columns: 2fr 8fr;
+        grid-template-areas: 'nav main';
+    }
+
+    nav {
+        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        background-color: var(--clr-primary);
+        padding: 2em;
+        background-color: black;
+        color: white;
+        height: 100%;
+        width: block;
+
+        position: fixed;
+
+        & a {
+            all: unset;
+            cursor: pointer;
+        }
+
+
+
+        & li {
+            all: unset;
+            width: 100%;
+
+            
+            
+
+            & .active {
+                background-color: white;
+                color: black;
+            }
+        
+            & a {
+                display: block;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.5);
+                padding: .5em;
+                border-radius: 5px;
+            }
+            
+
+        }
+
+        & ul {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            overflow: unset;
+            text-align: left;
+
+            &:last-of-type {
+                display: block;
+            }
+
+            & ul {
+                visibility: visible;
+                margin: 0 1em;
+                padding: .5em;
+                gap: 0;
+
+                & li {
+                    background-color: transparent;
+                }
+
+                & a {
+                    background-color: transparent;
+                }
+            }
+        }
+
+        & header {
+            display: flex;
+            gap: .5em;
+            align-items: center;
+        }
+
+        & .nav-main {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+        }
+
+    }
+
+    .dashboard main {
+        display: grid;
+        flex-direction: column;
+        gap: 2em;
+
+        padding: 2em;
+    }
+
+    .dashboard .profile {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        & img {
+            border-radius: 10000px;
+            margin: 0;
+        }
+    }
+
+    progress {
+        width: 100%;
+    }
+
+    ol {
+        display: flex;
+        gap: 1em;
+        overflow: auto;
+        
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            min-width: 20em;
+            
+            width: 100%;
+            padding: 1em;
+
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    .stakeholders ul {
+        display: flex;
+        gap: 1em;
+        overflow: auto;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            min-width: 20em;
+            
+            width: 100%;
+            padding: 1em;
+            background-color: rgba(0, 0, 0, 0.05); 
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & ul {
+            display: flex;
+            gap: 1em;
+
+            
+        }
+
+        & li {
+            all: unset;
+        }
+    }
 }
 

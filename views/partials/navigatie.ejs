@@ -6,48 +6,53 @@
     <% } else { %>
         <img src="/style/image/unknown.webp" alt="" height="100px" width="100px">
     <% } %>
-<p><%= companies.name %></p>
+    <div>
+        <p><%= companies.name %></p>
+        <small>Hoeveel jaar lid</small>
+    </div>
 </header>
 
-<ul>
-    <li>
-        <a href="/dashboard" <% if (current == '/') { %>class="active"<% } %>>Dashboard</a>
-    </li>
-    <li>
-        <a href="/financiers" <% if (current == '/financiers') { %>class="active"<% } %>>Financiers</a>
-        <ul>
-            <li><a href="/">+ voeg toe</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="/dashboard/<%= companies.id %>/klanten" <% if (current == '/klanten') { %>class="active"<% } %>>Klanten</a>
-        <ul>
-            <% klanten.forEach(function(klant) { %>
-                <li><a href="/klanten/<%= klant.id %>" <% if (current == '/klanten') { %>class="active"<% } %>><%= klant.name %></a></li>
-            <% }) %>  
-                <li><a href="/">+ voeg toe</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="/leveranciers" <% if (current == '/leveranciers') { %>class="active"<% } %>>Leveranciers</a>
-        <ul>
-            <li><a href="/">+ voeg toe</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="/medewerkers"<% if (current == '/medewerkers') { %>class="active"<% } %>>Medewerkers</a>
-        <ul>
-            <li><a href="/">+ voeg toe</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="/omgeving" <% if (current == '/omgeving') { %>class="active"<% } %>>Omgeving</a>
-        <ul>
-            <li><a href="/">+ voeg toe</a></li>
-        </ul>
-    </li>    
-</ul>
+<div class="nav-main">
+    <ul>
+        <li>
+            <a href="/dashboard" <% if (current == '/dashboard') { %>class="active"<% } %>>Dashboard</a>
+        </li>
+        <li>
+            <a href="/financiers" <% if (current == '/financiers') { %>class="active"<% } %>>Financiers</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/dashboard/<%= companies.id %>/klanten" <% if (current == '/klanten') { %>class="active"<% } %>>Klanten</a>
+            <ul>
+                <% klanten.forEach(function(klant) { %>
+                    <li><a href="/klanten/<%= klant.id %>"><%= klant.name %></a></li>
+                <% }) %>  
+                    <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/leveranciers" <% if (current == '/leveranciers') { %>class="active"<% } %>>Leveranciers</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/medewerkers"<% if (current == '/medewerkers') { %>class="active"<% } %>>Medewerkers</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/omgeving" <% if (current == '/omgeving') { %>class="active"<% } %>>Omgeving</a>
+            <ul>
+                <li><button type="button">+ voeg toe</button></li>
+            </ul>
+        </li>    
+    </ul>
 
-<ul>
-    <li><a href="/" <% if (current == '/') { %>class="active"<% } %>>Afmelden</a></li>
-</ul>
+    <ul>
+        <li><a href="/" <% if (current == '/') { %>class="active"<% } %>>Afmelden</a></li>
+    </ul>
+</div>
