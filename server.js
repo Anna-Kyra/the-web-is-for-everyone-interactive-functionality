@@ -19,7 +19,7 @@ const leveranciersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"ty
 const financiersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"financiers"}`)
 const medewerkersData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"medewerkers"}`)
 const omgevingData = await fetchJson(apiUrl + `/hf_stakeholders/?filter={"type":"omgeving"}`)
-console.log(leveranciersData.data)
+// console.log(leveranciersData.data)
 
 // ROUTES 
 app.get('/', function(request, response) {
@@ -70,16 +70,6 @@ app.get('/dashboard/:id', function(request, response) {
         })
     }) 
 })
-
-// app.post('/dashboard/:id', (request, response) =>{
-//     console.log(request.body)
-//     console.log(request.body.klant) // naam in de ejs
-//     const klant = new Klant({
-//         name: request.body.klant
-//     })
-//     klant.save()
-
-// })
 
 app.get('/klanten/:id', function(request, response) {
     fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
