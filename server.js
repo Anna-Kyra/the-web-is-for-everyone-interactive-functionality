@@ -71,6 +71,7 @@ app.get('/dashboard/:id', function(request, response) {
     }) 
 })
 
+
 app.get('/klanten/:id', function(request, response) {
     fetchJson(apiUrl + '/hf_companies/' + request.params.id).then((companiesData) => {
         fetchJson(apiUrl + `/hf_stakeholders/?filter={"company_id":"${request.params.id}", "type":"klanten"}`).then((klantenData) => { 
@@ -90,7 +91,7 @@ app.get('/klanten/:id', function(request, response) {
 })
 
 // Stel het poortnummer in waar express op moet gaan luisteren
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8008)
 
 // Start express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function() {
